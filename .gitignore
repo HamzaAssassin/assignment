@@ -1,0 +1,37 @@
+# Flutter/Dart specific files
+**/.dart_tool/
+**/.flutter-plugins
+**/.flutter-plugins-dependencies
+**/.packages
+**/.pub/
+**/build/
+**/ios/Pods/
+**/android/.gradle/
+**/android/app/build/
+**/android/app/intermediates/
+**/android/build/
+**/android/gradle/
+**/android/gradlew
+**/android/gradlew.bat
+**/ios/Flutter/Flutter.framework/
+**/ios/Flutter/Generated.xcconfig
+**/ios/Flutter/App.framework/
+**/ios/Flutter/flutter_export_environment.sh
+**/ios/Podfile.lock
+**/ios/Pods/
+**/ios/.symlinks/
+**/ios/Runner.xcodeproj/
+**/ios/Runner/GeneratedPluginRegistrant.*
+
+# Android specific files
+**/android/app/src/main/kotlin/io/flutter/plugins/GeneratedPluginRegistrant.java
+**/android/app/src/main/AndroidManifest.xml
+**/android/local.properties
+**/android/*.iml
+**/android/.idea/
+
+# iOS specific files
+**/ios/Runner/Info.plist
+**/ios/Runner/GeneratedPluginRegistrant.m
+**/ios/Runner/Base.lproj/
+**/ios/Runner.xcworkspace/
