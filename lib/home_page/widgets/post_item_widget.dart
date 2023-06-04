@@ -8,12 +8,15 @@ class PostItemWidget extends StatelessWidget {
       {Key? key,
       required this.title,
       required this.keywrod,
-      this.imageUrl =
-          'https://images.unsplash.com/photo-1483232539664-d89822fb5d3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cGhvdG8lMjBiYWNrZ3JvdW5kfGVufDB8fDB8fHww&w=1000&q=80',
+      required this.imageUrl,
+      required this.backColor,
+      required this.isNew,
       required this.iconButtonType})
       : super(key: key);
   final String title;
   final String imageUrl;
+  final Color backColor;
+  final bool isNew;
   final IconData iconButtonType;
   final String keywrod;
 
@@ -35,6 +38,21 @@ class PostItemWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                isNew == true
+                    ? Container(
+                        height: 20,
+                        width: 50,
+                        decoration: BoxDecoration(
+                            color: Color(0xffF18066),
+                            borderRadius: BorderRadius.circular(30)),
+                        child: const Center(
+                          child: Text(
+                            "New",
+                            style: TextStyle(color: Colors.white, fontSize: 12),
+                          ),
+                        ),
+                      )
+                    : const SizedBox(),
                 Text(
                   title,
                   maxLines: 2,
@@ -55,13 +73,9 @@ class PostItemWidget extends StatelessWidget {
                       size: 25,
                       fontSize: 12,
                     ),
-                    // const Text(
-                    //   " | ",
-                    //   style: TextStyle(
-                    //       fontSize: 12,
-                    //       color: Color(0xff74746C),
-                    //       fontWeight: FontWeight.bold),
-                    // ),
+                    SizedBox(
+                      width: 5,
+                    ),
                     Text(
                       keywrod,
                       style: const TextStyle(
@@ -74,10 +88,19 @@ class PostItemWidget extends StatelessWidget {
               ],
             ),
           ),
-          const CircleAvatar(
-            maxRadius: 34,
-            backgroundImage: NetworkImage(
-              'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Circle-icons-running.svg/2048px-Circle-icons-running.svg.png',
+          Container(
+            height: 70,
+            width: 70,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: backColor,
+            ),
+            child: Center(
+              child: Image.asset(
+                imageUrl,
+                height: 50,
+                width: 60,
+              ),
             ),
           ),
         ],

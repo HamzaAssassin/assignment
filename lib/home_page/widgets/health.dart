@@ -44,19 +44,25 @@ class Health extends StatelessWidget {
           child: Container(
             height: 75,
             width: 171,
-            padding: const EdgeInsets.only(left: 5),
+            padding: const EdgeInsets.only(left: 5,top: 5),
             child: const Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  "Blood Pressure (bpm)",
-                  style: TextStyle(fontSize: 8, fontWeight: FontWeight.bold),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "Blood Pressure (bpm)",
+                      style: TextStyle(fontSize: 8, fontWeight: FontWeight.bold),
+                    ),
+                    Icon(Icons.navigate_next,size: 12,)
+                  ],
                 ),
                 Row(
                   children: [
                     SizedBox(
-                      height: 63,
-                      width: 45,
+                      height: 47,
+                      width: 50,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -68,15 +74,16 @@ class Health extends StatelessWidget {
                           Text(
                             "141/90",
                             style: TextStyle(
-                              fontSize: 8,
-                              fontWeight: FontWeight.bold,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w900,
                               color: Color(0xffFF8686),
                             ),
                           ),
                           Text(
-                            "7 Minutes ago",
+                            "7 min ago",
                             style: TextStyle(
-                              fontSize: 6.5,
+                              fontSize: 7,
+                              fontWeight: FontWeight.bold,
                               color: Color(0xffFF8686),
                             ),
                           ),
@@ -84,8 +91,8 @@ class Health extends StatelessWidget {
                       ),
                     ),
                     SizedBox(
-                      height: 60,
-                      width: 120,
+                      height: 55,
+                      width: 115,
                       child: Graph(),
                     ),
                   ],

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:stefani_wong/home_page/widgets/diet_type.dart';
 import 'package:stefani_wong/home_page/widgets/excercise_performance_widget.dart';
 import 'package:stefani_wong/home_page/widgets/post_item_widget.dart';
 import 'package:stefani_wong/home_page/widgets/widget_todo_item.dart';
@@ -9,6 +10,7 @@ import '../widgets/budget.dart';
 import '../widgets/diet_item.dart';
 import '../widgets/health.dart';
 import '../widgets/medicines.dart';
+import '../widgets/streaks.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -29,20 +31,38 @@ class HomePage extends StatelessWidget {
                 width: width,
                 child: const MyAppBar(),
               ),
-              Container(
-                height: height * 0.01,
-                width: width,
-                margin: const EdgeInsets.only(right: 60),
-                child: const Center(
-                  child: Text(
-                    "5 Days Streak",
-                    style: TextStyle(
-                      fontSize: 8,
-                      color: Colors.black38,
-                      fontWeight: FontWeight.w800,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    width: 70,
+                    margin: const EdgeInsets.only(right: 30),
+                    child: const Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Streaks(),
+                        Streaks(),
+                        Streaks(),
+                        Streaks(),
+                        Streaks(),
+                        Streaks(),
+                      ],
                     ),
                   ),
-                ),
+                  SizedBox(
+                    height: height * 0.01,
+                    child: const Center(
+                      child: Text(
+                        "5 Days Streak",
+                        style: TextStyle(
+                          fontSize: 8,
+                          color: Colors.black38,
+                          fontWeight: FontWeight.w800,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
               SizedBox(
                 height: height * 0.15,
@@ -83,16 +103,39 @@ class HomePage extends StatelessWidget {
                   style: TextStyle(fontWeight: FontWeight.w700, fontSize: 13),
                 ),
               ),
-              const SizedBox(
-                child: Row(
+              SizedBox(
+                height: height * 0.05,
+                child: const Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    DietItem(),
-                    DietItem(),
-                    DietItem(),
-                    DietItem(),
+                    DietType(isSelected: true, title: "Breakfast"),
+                    SizedBox(
+                      width: 15,
+                    ),
+                    DietType(isSelected: false, title: "Lunch"),
+                    SizedBox(
+                      width: 15,
+                    ),
+                    DietType(isSelected: false, title: "Snacks"),
+                    SizedBox(
+                      width: 15,
+                    ),
+                    DietType(isSelected: false, title: "Dinner"),
+                    SizedBox(
+                      width: 15,
+                    ),
+                    AddCustumDiet()
                   ],
                 ),
+              ),
+              const Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  DietItem(),
+                  DietItem(),
+                  DietItem(),
+                  DietItem(),
+                ],
               ),
               SizedBox(
                 height: height * 0.05,
@@ -110,6 +153,14 @@ class HomePage extends StatelessWidget {
                 child: const ExercisePerformanceWidget(
                     minutes: 20, remainingTime: 10),
               ),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: SizedBox(
+                  height: height * 0.05,
+                  width: width * 0.5,
+                  child: const SuggestedExercise(),
+                ),
+              ),
               SizedBox(
                 height: height * 0.05,
                 width: width * 0.9,
@@ -121,25 +172,34 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
               ),
-              TodoListItemWidget(
-                  todoTitle: "Measure your blood pressure",
-                  time: "11:00 AM",
-                  isCompleted: true),
-              TodoListItemWidget(
-                  todoTitle: "Go for CBC lab test",
-                  time: "4:00 PM",
-                  isCompleted: true),
-              TodoListItemWidget(
-                  todoTitle: "Refill your medicines",
-                  time: "8:00 P M",
-                  isCompleted: true),
+              SizedBox(
+                width: width*0.95,
+                child: TodoListItemWidget(
+                    todoTitle: "Measure your blood pressure",
+                    time: "11:00 AM",
+                    isCompleted: true),
+              ),
+              SizedBox(
+                width: width*0.95,
+                child: TodoListItemWidget(
+                    todoTitle: "Go for CBC lab test",
+                    time: "4:00 PM",
+                    isCompleted: false),
+              ),
+              SizedBox(
+                width: width*0.95,
+                child: TodoListItemWidget(
+                    todoTitle: "Refill your medicines",
+                    time: "8:00 P M",
+                    isCompleted: false),
+              ),
               SizedBox(
                 height: height * 0.05,
                 width: width * 0.9,
                 child: const Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    "Insight of You",
+                    "Insights of You",
                     style: TextStyle(fontWeight: FontWeight.w700, fontSize: 13),
                   ),
                 ),
@@ -147,11 +207,17 @@ class HomePage extends StatelessWidget {
               const PostItemWidget(
                   title: "How to fall asleep without efforts",
                   keywrod: "Reading | Anxiety",
-                  iconButtonType: Icons.book_online_outlined),
+                  imageUrl: 'assets/images/day.png',
+                  isNew: true,
+                  backColor: Color(0xffEBB456),
+                  iconButtonType: Icons.menu_book_sharp),
               const PostItemWidget(
                   title: "Boost your energy with these simple techniques",
                   keywrod: "Video | Productivity",
-                  iconButtonType: Icons.videocam_off),
+                  imageUrl: 'assets/images/shuttle.png',
+                  isNew: false,
+                  backColor: Color(0xffF27F67),
+                  iconButtonType: Icons.video_collection_outlined),
               SizedBox(
                 height: height * 0.1,
               )

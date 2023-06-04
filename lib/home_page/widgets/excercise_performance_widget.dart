@@ -26,10 +26,20 @@ class ExercisePerformanceWidget extends StatelessWidget {
       ),
       child: Row(
         children: [
-          const CircleAvatar(
-            maxRadius: 30,
-            backgroundImage: NetworkImage(
-              'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Circle-icons-running.svg/2048px-Circle-icons-running.svg.png',
+          Container(
+            height: 70,
+            width: 70,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: Colors.white,
+              border: Border.all(color: Colors.grey.shade400)
+            ),
+            child: Center(
+              child: Image.asset(
+                'assets/images/exercise.png',
+                height: 50,
+                width: 60,
+              ),
             ),
           ),
           ExerciseTrackerWidget(
@@ -40,7 +50,11 @@ class ExercisePerformanceWidget extends StatelessWidget {
             width: 15,
           ),
           const CircleAvatar(
-            child: Icon(Icons.done),
+            backgroundColor: Color(0xff2F98B9),
+            child: Icon(
+              Icons.done,
+              color: Colors.white,
+            ),
           )
         ],
       ),
@@ -100,7 +114,7 @@ class _ExerciseTrackerWidgetState extends State<ExerciseTrackerWidget> {
                         minutes: widget.minutes,
                         remainingTime: widget.remainingTime),
                     style: const TextStyle(
-                      color: Colors.green,
+                      color:  Color(0xff2F98B9),
                     ),
                   ),
                 ],
@@ -110,15 +124,50 @@ class _ExerciseTrackerWidgetState extends State<ExerciseTrackerWidget> {
           const SizedBox(
             height: 5,
           ),
-
           LinearProgressIndicator(
             value: getSpentTime(widget.minutes, widget.remainingTime) /
                 widget.minutes,
             minHeight: 10,
             color: Color(0xff2F98B9),
-          ), // Progress value between 0.0 and 1.0
+          ),
         ],
       ),
+    );
+  }
+}
+
+class SuggestedExercise extends StatelessWidget {
+  const SuggestedExercise({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        const Text(
+          "Suggested Exercise",
+          style: TextStyle(
+            fontSize: 11,
+            color: Color(0xff2F98B9),
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        Container(
+          height: 15,
+          width: 15,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            border: Border.all(
+              color: Color(0xff2F98B9),
+            ),
+          ),
+          child: Icon(
+            Icons.arrow_forward_rounded,
+            size: 8,
+            color: Color(0xff2F98B9),
+          ),
+        )
+      ],
     );
   }
 }

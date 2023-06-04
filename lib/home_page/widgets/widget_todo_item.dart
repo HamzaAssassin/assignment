@@ -62,23 +62,28 @@ class _TodoListItemWidgetState extends State<TodoListItemWidget> {
                 ),
               ),
               Expanded(
-                child: FittedBox(
-                  child: Text(
-                    truncateText(widget.todoTitle),
-                    overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(
-                        fontSize: 8, fontWeight: FontWeight.w500),
-                  ),
+                child: Text(
+                  truncateText(widget.todoTitle),
+                  overflow: TextOverflow.ellipsis,
+                  style: const TextStyle(
+                      fontSize: 10, fontWeight: FontWeight.w500),
                 ),
               ),
               Checkbox(
                 value: widget.isCompleted,
-                shape: const CircleBorder(),
+                shape: const CircleBorder(
+                  
+                ),
+                side:const BorderSide(
+                    color: Color(0xff2F98B9),
+                    width: 1.5
+                  ),
                 checkColor: Colors.white,
                 fillColor: MaterialStateProperty.resolveWith<Color?>(
                   (Set<MaterialState> states) {
                     if (states.contains(MaterialState.selected)) {
-                      return Colors.blue[200]; // Color when checkbox is checked
+                      return Color(
+                          0xff2F98B9); // Color when checkbox is checked
                     }
                     return null; // Color when checkbox is unchecked
                   },
@@ -104,22 +109,20 @@ class _TodoListItemWidgetState extends State<TodoListItemWidget> {
           ),
         ),
       ),
-      Expanded(
-        child: Container(
-          height: 18,
-          width: 61,
-          decoration: BoxDecoration(
-              color: const Color(0xff2F98B9),
-              borderRadius: BorderRadius.circular(30)),
-          child: const Center(
-            child: Text(
-              "AddReminder",
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                  fontSize: 6,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white),
-            ),
+      Container(
+        height: 18,
+        width: 65,
+        decoration: BoxDecoration(
+            color: const Color(0xff2F98B9),
+            borderRadius: BorderRadius.circular(30)),
+        child: const Center(
+          child: Text(
+            "AddReminder",
+            textAlign: TextAlign.center,
+            style: TextStyle(
+                fontSize: 6,
+                fontWeight: FontWeight.bold,
+                color: Colors.white),
           ),
         ),
       ),
